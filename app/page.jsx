@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Check from "./logos/Check";
 
 const Page = () => {
   //   Compony link optional
@@ -40,9 +41,16 @@ const Page = () => {
 
   const [branchYear, setBranchYear] = useState("Branch Year");
 
+  const [copySuccess, setCopySuccess] = useState("");
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(message);
+    setCopySuccess("Copied");
+    setTimeout(() => {
+      setCopySuccess("");
+    }, 3000); // Reset the message after 2 seconds
   };
+
   const messageParts = [
     `*NOTICE FOR ${companyName.toUpperCase()} ${jobType.toUpperCase()} DRIVE FOR BATCH ${branchYear}*`,
     `This message is to inform students regarding ${companyName} ${jobType} drive.${jobDescription}`,
@@ -295,9 +303,11 @@ const Page = () => {
         />
         <button
           onClick={copyToClipboard}
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className={`mt-4 px-4 py-2 text-white rounded hover:scale-105 transition-all ease-in-out active:scale-95  ${
+            copySuccess ? "bg-green-600" : "bg-blue-600"
+          }`}
         >
-          Copy
+          {copySuccess ? <Check /> : "Copy"}
         </button>
       </div>
     </div>
