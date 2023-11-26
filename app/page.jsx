@@ -45,7 +45,7 @@ const Page = () => {
   };
   const messageParts = [
     `*NOTICE FOR ${companyName.toUpperCase()} ${jobType.toUpperCase()} DRIVE FOR BATCH ${branchYear}*`,
-    `This message is to inform students regarding ${companyName} ${jobType} drive.\n${jobDescription}`,
+    `This message is to inform students regarding ${companyName} ${jobType} drive.${jobDescription}`,
     jobCompanyLink && `*Company link:* ${jobCompanyLink}`,
     `*Branches:* ${jobBranches}`,
     `*Eligibility:*\n${jobEligibility}`,
